@@ -5,10 +5,14 @@
  */
 package Dominio;
 
+import java.util.Date;
+
 /**
  *
  * @author reida
  */
 public class Pagamento {
-    
+    private Date dataPagamento;
+    private double valorTotal;
+    private Processo[] processos;
 }

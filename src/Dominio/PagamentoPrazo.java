@@ -9,6 +9,8 @@ package Dominio;
  *
  * @author reida
  */
-public class PagamentoPrazo {
-    
+public class PagamentoPrazo extends Pagamento {
+    private double valorParc;
+    private String modoPagamento;
+    private Parcela[] parcelas;
 }

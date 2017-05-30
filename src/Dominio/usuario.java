@@ -10,5 +10,7 @@ package Dominio;
  * @author reida
  */
 public class usuario {
-    
+    private String login;
+    private String senha;
+   
 }

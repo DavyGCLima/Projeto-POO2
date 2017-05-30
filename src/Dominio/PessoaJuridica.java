@@ -9,6 +9,9 @@ package Dominio;
  *
  * @author reida
  */
-public class PessoaJuridica {
-    
+public class PessoaJuridica extends Pessoa {
+    private int cnpj;
+    private String razaoSoc;
+    private String inscricaoEstadual;
+    private String inscricaoMunicipal;
 }

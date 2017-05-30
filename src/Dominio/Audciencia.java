@@ -5,10 +5,12 @@
  */
 package Dominio;
 
+import java.util.Date;
+
 /**
  *
  * @author reida
  */
 public class Audciencia {
-    
+    private Date data;
 }

@@ -9,6 +9,12 @@ package Dominio;
  *
  * @author reida
  */
-public class Pessoa {
+public abstract class Pessoa {
+    private String nome;
+    private int numero;
+    private String email;
+    private String site;
+    private String endereco;
+    private Processo[] processos;
     
 }

@@ -9,6 +9,8 @@ package Dominio;
  *
  * @author reida
  */
-public class Advogado {
-    
+public class Advogado extends PessoaFisica{
+    private String oab;
+    private Processo[] processos;
+    private usuario usuario;
 }

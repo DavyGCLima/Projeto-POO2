@@ -10,5 +10,7 @@ package Dominio;
  * @author reida
  */
 public class EstadoProcesso {
-    
+    private String stado;
+    private Process[] processos;
+    private EstadoProcesso[] estadoAnterior;
 }

@@ -5,10 +5,17 @@
  */
 package Dominio;
 
+import java.util.Date;
+
 /**
  *
  * @author reida
  */
-public class PessoaFisica {
+public class PessoaFisica extends Pessoa {
+    private int cpf;
+    private Date dataNasc;
+    private String estadoCivil;
+    private String naturalidade;
+    private String nacionaldiade;
     
 }
