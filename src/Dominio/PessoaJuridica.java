@@ -14,4 +14,49 @@ public class PessoaJuridica extends Pessoa {
     private String razaoSoc;
     private String inscricaoEstadual;
     private String inscricaoMunicipal;
+
+    public PessoaJuridica() {
+    }
+
+    public PessoaJuridica(int cnpj, String razaoSoc, String inscricaoEstadual, String inscricaoMunicipal, String nome, int numero, String email, String site, String endereco, Processo[] processos) {
+        super(nome, numero, email, site, endereco, processos);
+        this.cnpj = cnpj;
+        this.razaoSoc = razaoSoc;
+        this.inscricaoEstadual = inscricaoEstadual;
+        this.inscricaoMunicipal = inscricaoMunicipal;
+    }
+
+    public int getCnpj() {
+        return cnpj;
+    }
+
+    public String getRazaoSoc() {
+        return razaoSoc;
+    }
+
+    public String getInscricaoEstadual() {
+        return inscricaoEstadual;
+    }
+
+    public String getInscricaoMunicipal() {
+        return inscricaoMunicipal;
+    }
+
+    public void setCnpj(int cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public void setRazaoSoc(String razaoSoc) {
+        this.razaoSoc = razaoSoc;
+    }
+
+    public void setInscricaoEstadual(String inscricaoEstadual) {
+        this.inscricaoEstadual = inscricaoEstadual;
+    }
+
+    public void setInscricaoMunicipal(String inscricaoMunicipal) {
+        this.inscricaoMunicipal = inscricaoMunicipal;
+    }
+    
+    
 }
