@@ -19,10 +19,20 @@ public abstract class Pessoa {
     private String endereco;
     private ArrayList<Processo> processos;
 
-    public Pessoa() {
+    public Pessoa(String nome, int numero, String email, String site, String endereco, ArrayList<Processo> processos) {
+        this.nome = nome;
+        this.numero = numero;
+        this.email = email;
+        this.site = site;
+        this.endereco = endereco;
+        this.processos = processos;
     }
 
-
+    public Pessoa() {
+    }
+    
+    
+    
     public String getNome() {
         return nome;
     }

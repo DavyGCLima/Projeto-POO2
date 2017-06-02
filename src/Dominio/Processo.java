@@ -29,6 +29,24 @@ public class Processo {
 
     public Processo() {
     }
+
+    public Processo(String Titulo, String Pasta, int numero, String justiça, String instancia, String orgao, double valorProcesso, String descricao, String acao, ArrayList<Advogado> advogados, ArrayList<Pessoa> cliente, EstadoProcesso estadoProcesso, ArrayList<Audciencia> audiencias, Pagamento pagamento) {
+        this.Titulo = Titulo;
+        this.Pasta = Pasta;
+        this.numero = numero;
+        this.justiça = justiça;
+        this.instancia = instancia;
+        this.orgao = orgao;
+        this.valorProcesso = valorProcesso;
+        this.descricao = descricao;
+        this.acao = acao;
+        this.advogados = advogados;
+        this.cliente = cliente;
+        this.estadoProcesso = estadoProcesso;
+        this.audiencias = audiencias;
+        this.pagamento = pagamento;
+    }
+    
     
     
     public String getTitulo() {

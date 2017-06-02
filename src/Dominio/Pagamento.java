@@ -20,7 +20,12 @@ public class Pagamento {
     public Pagamento() {
     }
 
-
+    public Pagamento(Date dataPagamento, double valorTotal, ArrayList<Processo> processos) {
+        this.dataPagamento = dataPagamento;
+        this.valorTotal = valorTotal;
+        this.processos = processos;
+    }
+    
     public Date getDataPagamento() {
         return dataPagamento;
     }

@@ -16,10 +16,18 @@ public class PagamentoPrazo extends Pagamento {
     private double valorParc;
     private String modoPagamento;
     private ArrayList<Parcela> parcelas;
-
+    
     public PagamentoPrazo() {
     }
 
+    public PagamentoPrazo(double valorParc, String modoPagamento, ArrayList<Parcela> parcelas, Date dataPagamento, double valorTotal, ArrayList<Processo> processos) {
+        super(dataPagamento, valorTotal, processos);
+        this.valorParc = valorParc;
+        this.modoPagamento = modoPagamento;
+        this.parcelas = parcelas;
+    }
+
+    
 
     public double getValorParc() {
         return valorParc;

@@ -14,4 +14,10 @@ import java.util.Date;
  */
 public class Audciencia {
     private Date data;
+
+    public Audciencia(Date data) {
+        this.data = data;
+    }
+    
+    
 }

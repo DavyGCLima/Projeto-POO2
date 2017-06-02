@@ -24,5 +24,12 @@ public class EstadoProcesso {
         return estado;
     }
 
+    public EstadoProcesso(String estado, ArrayList<Processo> processos, ArrayList<EstadoProcesso> estadoAnterior) {
+        this.estado = estado;
+        this.processos = processos;
+        this.estadoAnterior = estadoAnterior;
+    }
+
+    
     
 }
