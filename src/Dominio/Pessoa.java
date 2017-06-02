@@ -5,6 +5,8 @@
  */
 package Dominio;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author reida
@@ -15,19 +17,11 @@ public abstract class Pessoa {
     private String email;
     private String site;
     private String endereco;
-    private Processo[] processos;
+    private ArrayList<Processo> processos;
 
     public Pessoa() {
     }
 
-    public Pessoa(String nome, int numero, String email, String site, String endereco, Processo[] processos) {
-        this.nome = nome;
-        this.numero = numero;
-        this.email = email;
-        this.site = site;
-        this.endereco = endereco;
-        this.processos = processos;
-    }
 
     public String getNome() {
         return nome;
@@ -49,10 +43,6 @@ public abstract class Pessoa {
         return endereco;
     }
 
-    public Processo[] getProcessos() {
-        return processos;
-    }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -72,11 +62,4 @@ public abstract class Pessoa {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-
-    public void setProcessos(Processo[] processos) {
-        this.processos = processos;
-    }
-    
-    
-    
 }

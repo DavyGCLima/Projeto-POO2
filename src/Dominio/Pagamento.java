@@ -5,6 +5,7 @@
  */
 package Dominio;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -14,16 +15,11 @@ import java.util.Date;
 public class Pagamento {
     private Date dataPagamento;
     private double valorTotal;
-    private Processo[] processos;
+    private ArrayList<Processo> processos;
 
     public Pagamento() {
     }
 
-    public Pagamento(Date dataPagamento, double valorTotal, Processo[] processos) {
-        this.dataPagamento = dataPagamento;
-        this.valorTotal = valorTotal;
-        this.processos = processos;
-    }
 
     public Date getDataPagamento() {
         return dataPagamento;
@@ -33,9 +29,6 @@ public class Pagamento {
         return valorTotal;
     }
 
-    public Processo[] getProcessos() {
-        return processos;
-    }
 
     public void setDataPagamento(Date dataPagamento) {
         this.dataPagamento = dataPagamento;
@@ -44,10 +37,4 @@ public class Pagamento {
     public void setValorTotal(double valorTotal) {
         this.valorTotal = valorTotal;
     }
-
-    public void setProcessos(Processo[] processos) {
-        this.processos = processos;
-    }
-    
-    
 }

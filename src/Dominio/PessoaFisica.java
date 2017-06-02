@@ -21,15 +21,6 @@ public class PessoaFisica extends Pessoa {
     public PessoaFisica() {
     }
 
-    public PessoaFisica(int cpf, Date dataNasc, String estadoCivil, String naturalidade, String nacionaldiade, String nome, int numero, String email, String site, String endereco, Processo[] processos) {
-        super(nome, numero, email, site, endereco, processos);
-        this.cpf = cpf;
-        this.dataNasc = dataNasc;
-        this.estadoCivil = estadoCivil;
-        this.naturalidade = naturalidade;
-        this.nacionaldiade = nacionaldiade;
-    }
-
     public int getCpf() {
         return cpf;
     }

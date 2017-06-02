@@ -18,13 +18,6 @@ public class PessoaJuridica extends Pessoa {
     public PessoaJuridica() {
     }
 
-    public PessoaJuridica(int cnpj, String razaoSoc, String inscricaoEstadual, String inscricaoMunicipal, String nome, int numero, String email, String site, String endereco, Processo[] processos) {
-        super(nome, numero, email, site, endereco, processos);
-        this.cnpj = cnpj;
-        this.razaoSoc = razaoSoc;
-        this.inscricaoEstadual = inscricaoEstadual;
-        this.inscricaoMunicipal = inscricaoMunicipal;
-    }
 
     public int getCnpj() {
         return cnpj;

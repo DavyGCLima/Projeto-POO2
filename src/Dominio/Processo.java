@@ -5,6 +5,8 @@
  */
 package Dominio;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author reida
@@ -19,32 +21,14 @@ public class Processo {
     private double valorProcesso;
     private String descricao;
     private String acao;
-    private Advogado[] advogados;
-    private Pessoa[] cliente;
+    private ArrayList<Advogado> advogados;
+    private ArrayList<Pessoa> cliente;
     private EstadoProcesso estadoProcesso;
-    private Audciencia[] audiencias;
+    private ArrayList<Audciencia> audiencias;
     private Pagamento pagamento;
 
     public Processo() {
     }
-
-    public Processo(String Titulo, String Pasta, int numero, String justiça, String instancia, String orgao, double valorProcesso, String descricao, String acao, Advogado[] advogados, Pessoa[] cliente, EstadoProcesso estadoProcesso, Audciencia[] audiencias, Pagamento pagamento) {
-        this.Titulo = Titulo;
-        this.Pasta = Pasta;
-        this.numero = numero;
-        this.justiça = justiça;
-        this.instancia = instancia;
-        this.orgao = orgao;
-        this.valorProcesso = valorProcesso;
-        this.descricao = descricao;
-        this.acao = acao;
-        this.advogados = advogados;
-        this.cliente = cliente;
-        this.estadoProcesso = estadoProcesso;
-        this.audiencias = audiencias;
-        this.pagamento = pagamento;
-    }
-    
     
     
     public String getTitulo() {
@@ -83,20 +67,8 @@ public class Processo {
         return acao;
     }
 
-    public Advogado[] getAdvogados() {
-        return advogados;
-    }
-
-    public Pessoa[] getCliente() {
-        return cliente;
-    }
-
     public EstadoProcesso getEstadoProcesso() {
         return estadoProcesso;
-    }
-
-    public Audciencia[] getAudiencias() {
-        return audiencias;
     }
 
     public Pagamento getPagamento() {
@@ -138,23 +110,10 @@ public class Processo {
     public void setAcao(String acao) {
         this.acao = acao;
     }
-
-    public void setAdvogados(Advogado[] advogados) {
-        this.advogados = advogados;
-    }
-
-    public void setCliente(Pessoa[] cliente) {
-        this.cliente = cliente;
-    }
-
     public void setEstadoProcesso(EstadoProcesso estadoProcesso) {
         this.estadoProcesso = estadoProcesso;
     }
-
-    public void setAudiencias(Audciencia[] audiencias) {
-        this.audiencias = audiencias;
-    }
-
+    
     public void setPagamento(Pagamento pagamento) {
         this.pagamento = pagamento;
     }
