@@ -5,16 +5,15 @@
  */
 package Dominio;
 
-import java.util.ArrayList;
-
+import java.util.Collection;
 /**
  *
  * @author reida
  */
 public class EstadoProcesso {
     private String estado;
-    private ArrayList<Processo> processos;
-    private ArrayList<EstadoProcesso> estadoAnterior;
+    private Collection<Processo> processos;
+    private Collection<EstadoProcesso> estadoAnterior;
 
     public EstadoProcesso() {
     }
@@ -24,7 +23,7 @@ public class EstadoProcesso {
         return estado;
     }
 
-    public EstadoProcesso(String estado, ArrayList<Processo> processos, ArrayList<EstadoProcesso> estadoAnterior) {
+    public EstadoProcesso(String estado, Collection<Processo> processos, Collection<EstadoProcesso> estadoAnterior) {
         this.estado = estado;
         this.processos = processos;
         this.estadoAnterior = estadoAnterior;

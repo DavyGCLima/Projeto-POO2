@@ -5,23 +5,43 @@
  */
 package Dominio;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.Collection;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 /**
  *
  * @author reida
  */
+@Entity @Table(schema = "ProjectPOO2")
 public class Advogado {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name="idAdvogado")
+    private int id;
+    @Column(unique = true ,nullable = false, updatable = true, insertable = true, length = 45)
     private String oab;
-    private ArrayList<Processo> processos;
-    private usuario usuario;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "Cliente", schema = "ProjectPOO2", joinColumns@JoinColumn(name = "idAdvogado"),
+        inverseJoinColumns = @JoinColumn(name = "idProcesso"))
+    private Collection<Processo> processos;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idAdvogado", insertable = true, updatable = true, unique = true, nuable = false)
+    @Fetch(FetchMode.JOIN)
+    private Usuario usuario;
+    
     private PessoaFisica pessoaFisica;
 
     public Advogado() {
     }
 
-    public Advogado(String oab, ArrayList<Processo> processos, usuario usuario, PessoaFisica pessoaFisica) {
+    public Advogado(String oab, Collection<Processo> processos, Usuario usuario, PessoaFisica pessoaFisica) {
         this.oab = oab;
         this.processos = processos;
         this.usuario = usuario;
@@ -32,7 +52,7 @@ public class Advogado {
         return oab;
     }
 
-    public usuario getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
@@ -40,7 +60,7 @@ public class Advogado {
         this.oab = oab;
     }
 
-    public void setUsuario(usuario usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
     

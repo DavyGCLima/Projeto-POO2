@@ -5,7 +5,8 @@
  */
 package Dominio;
 
-import java.util.ArrayList;
+import java.util.Collection;
+
 
 /**
  *
@@ -17,9 +18,9 @@ public abstract class Pessoa {
     private String email;
     private String site;
     private String endereco;
-    private ArrayList<Processo> processos;
+    private Collection<Processo> processos;
 
-    public Pessoa(String nome, int numero, String email, String site, String endereco, ArrayList<Processo> processos) {
+    public Pessoa(String nome, int numero, String email, String site, String endereco, Collection<Processo> processos) {
         this.nome = nome;
         this.numero = numero;
         this.email = email;

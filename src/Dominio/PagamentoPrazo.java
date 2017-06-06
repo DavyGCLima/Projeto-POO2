@@ -5,7 +5,7 @@
  */
 package Dominio;
 
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 /**
@@ -15,12 +15,12 @@ import java.util.Date;
 public class PagamentoPrazo extends Pagamento {
     private double valorParc;
     private String modoPagamento;
-    private ArrayList<Parcela> parcelas;
+    private Collection<Parcela> parcelas;
     
     public PagamentoPrazo() {
     }
 
-    public PagamentoPrazo(double valorParc, String modoPagamento, ArrayList<Parcela> parcelas, Date dataPagamento, double valorTotal, ArrayList<Processo> processos) {
+    public PagamentoPrazo(double valorParc, String modoPagamento, Collection<Parcela> parcelas, Date dataPagamento, double valorTotal, Collection<Processo> processos) {
         super(dataPagamento, valorTotal, processos);
         this.valorParc = valorParc;
         this.modoPagamento = modoPagamento;

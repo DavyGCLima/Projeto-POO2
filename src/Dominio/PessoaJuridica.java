@@ -5,7 +5,8 @@
  */
 package Dominio;
 
-import java.util.ArrayList;
+import java.util.Collection;
+
 
 /**
  *
@@ -17,7 +18,7 @@ public class PessoaJuridica extends Pessoa {
     private String inscricaoEstadual;
     private String inscricaoMunicipal;
 
-    public PessoaJuridica(int cnpj, String razaoSoc, String inscricaoEstadual, String inscricaoMunicipal, String nome, int numero, String email, String site, String endereco, ArrayList<Processo> processos) {
+    public PessoaJuridica(int cnpj, String razaoSoc, String inscricaoEstadual, String inscricaoMunicipal, String nome, int numero, String email, String site, String endereco, Collection<Processo> processos) {
         super(nome, numero, email, site, endereco, processos);
         this.cnpj = cnpj;
         this.razaoSoc = razaoSoc;

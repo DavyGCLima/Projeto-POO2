@@ -5,7 +5,7 @@
  */
 package Dominio;
 
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 /**
@@ -19,7 +19,7 @@ public class PessoaFisica extends Pessoa {
     private String naturalidade;
     private String nacionaldiade;
 
-    public PessoaFisica(int cpf, Date dataNasc, String estadoCivil, String naturalidade, String nacionaldiade, String nome, int numero, String email, String site, String endereco, ArrayList<Processo> processos) {
+    public PessoaFisica(int cpf, Date dataNasc, String estadoCivil, String naturalidade, String nacionaldiade, String nome, int numero, String email, String site, String endereco, Collection<Processo> processos) {
         super(nome, numero, email, site, endereco, processos);
         this.cpf = cpf;
         this.dataNasc = dataNasc;

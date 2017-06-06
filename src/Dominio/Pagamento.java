@@ -5,7 +5,7 @@
  */
 package Dominio;
 
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 /**
@@ -15,12 +15,12 @@ import java.util.Date;
 public class Pagamento {
     private Date dataPagamento;
     private double valorTotal;
-    private ArrayList<Processo> processos;
+    private Collection<Processo> processos;
 
     public Pagamento() {
     }
 
-    public Pagamento(Date dataPagamento, double valorTotal, ArrayList<Processo> processos) {
+    public Pagamento(Date dataPagamento, double valorTotal, Collection<Processo> processos) {
         this.dataPagamento = dataPagamento;
         this.valorTotal = valorTotal;
         this.processos = processos;

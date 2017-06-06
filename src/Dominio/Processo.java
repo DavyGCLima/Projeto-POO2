@@ -5,7 +5,7 @@
  */
 package Dominio;
 
-import java.util.ArrayList;
+import java.util.Collection;
 import javax.persistence.*;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
@@ -43,11 +43,11 @@ public class Processo {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name="Responsabiliza", schema = "ProjectPOO2", joinColumns = @JoinColumn(name = "idProcesso"),
             inverseJoinColumns = @JoinColumn(name = "idAdvogado"))
-    private ArrayList<Advogado> advogados;
+    private Collection<Advogado> advogados;
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "Cliente", schema = "ProjectPOO2", joinColumns = @JoinColumn(name = "idProcesso"),
             inverseJoinColumns = @JoinColumn(name = "idPessoa"))
-    private ArrayList<Pessoa> cliente;
+    private Collection<Pessoa> cliente;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idEstadoProcesso", insertable = true, updatable = true, unique = true)
     @Fetch(FetchMode.JOIN)
@@ -55,17 +55,20 @@ public class Processo {
     private EstadoProcesso estadoProcesso;
     @OneToMany(mappedBy = "processo", fetch = FetchType.LAZY)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    private ArrayList<Audciencia> audiencias;
+    private Collection<Audciencia> audiencias;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idPagamento", insertable = true, updatable = true, nullable = false)
     @Fetch(FetchMode.JOIN)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Pagamento pagamento;
+    @OneToOne
+    @JoinColumn(name = "idUsuario")
+    private Usuario usuario;
 
     public Processo() {
     }
 
-    public Processo(String Titulo, String Pasta, int numero, String justiça, String instancia, String orgao, double valorProcesso, String descricao, String acao, ArrayList<Advogado> advogados, ArrayList<Pessoa> cliente, EstadoProcesso estadoProcesso, ArrayList<Audciencia> audiencias, Pagamento pagamento) {
+    public Processo(String Titulo, String Pasta, int numero, String justiça, String instancia, String orgao, double valorProcesso, String descricao, String acao, Collection<Advogado> advogados, Collection<Pessoa> cliente, EstadoProcesso estadoProcesso, Collection<Audciencia> audiencias, Pagamento pagamento) {
         this.Titulo = Titulo;
         this.Pasta = Pasta;
         this.numero = numero;
