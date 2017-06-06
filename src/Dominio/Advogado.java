@@ -12,30 +12,25 @@ import java.util.Date;
  *
  * @author reida
  */
-public class Advogado extends PessoaFisica {
-    private PessoaFisica pessoa;
+public class Advogado {
     private String oab;
     private ArrayList<Processo> processos;
     private usuario usuario;
+    private PessoaFisica pessoaFisica;
 
     public Advogado() {
     }
 
-    public Advogado(PessoaFisica pessoa, String oab, usuario usuario, int cpf, Date dataNasc, String estadoCivil, String naturalidade, String nacionaldiade, String nome, int numero, String email, String site, String endereco, ArrayList<Processo> processos) {
-        super(cpf, dataNasc, estadoCivil, naturalidade, nacionaldiade, nome, numero, email, site, endereco, processos);
-        this.pessoa = pessoa;
+    public Advogado(String oab, ArrayList<Processo> processos, usuario usuario, PessoaFisica pessoaFisica) {
         this.oab = oab;
         this.processos = processos;
         this.usuario = usuario;
+        this.pessoaFisica = pessoaFisica;
     }
 
-    
-    
     public String getOab() {
         return oab;
     }
-
-
 
     public usuario getUsuario() {
         return usuario;
@@ -44,7 +39,6 @@ public class Advogado extends PessoaFisica {
     public void setOab(String oab) {
         this.oab = oab;
     }
-
 
     public void setUsuario(usuario usuario) {
         this.usuario = usuario;
