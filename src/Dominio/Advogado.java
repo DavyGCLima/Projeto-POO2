@@ -25,16 +25,20 @@ public class Advogado {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name="idAdvogado")
     private int id;
-    @Column(unique = true ,nullable = false, updatable = true, insertable = true, length = 45)
+    
+    @Column(nullable = false, updatable = true, insertable = true, length = 45)
     private String oab;
+    
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "Cliente", schema = "ProjectPOO2", joinColumns@JoinColumn(name = "idAdvogado"),
         inverseJoinColumns = @JoinColumn(name = "idProcesso"))
     private Collection<Processo> processos;
+    
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "idAdvogado", insertable = true, updatable = true, unique = true, nuable = false)
     @Fetch(FetchMode.JOIN)
     private Usuario usuario;
+    
     
     private PessoaFisica pessoaFisica;
 

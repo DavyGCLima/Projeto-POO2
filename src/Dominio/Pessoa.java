@@ -12,7 +12,14 @@ import java.util.Collection;
  *
  * @author reida
  */
+@MappedSuperclass
 public abstract class Pessoa {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name="idPessoa")
+    private int idPessoa;
+    
+    
     private String nome;
     private int numero;
     private String email;
