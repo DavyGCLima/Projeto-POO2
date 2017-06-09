@@ -26,7 +26,7 @@ public class Usuario {
     @Column(insertable = true, updatable = true, length = 16, nullable = true)
     private String senha;
     
-    @OneToMany()
+    
     public Usuario() {
     }
 
