@@ -4,15 +4,21 @@
  * and open the template in the editor.
  */
 package Dominio;
-
-import java.util.Collection;
-
+import org.hibernate.*;
 
 /**
  *
  * @author reida
  */
+@Entity 
+@Table(schema = "ProjectPOO2")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) 
 public class PessoaJuridica extends Pessoa {
+    @Id
+    @GeneretedValue(strategy = GenerationType.SEQUENCE)
+    private int id;
+    
+    @Column()
     private int cnpj;
     private String razaoSoc;
     private String inscricaoEstadual;
