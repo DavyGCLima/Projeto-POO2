@@ -7,18 +7,28 @@ package Dominio;
 
 import java.util.Collection;
 import java.util.Date;
-
+ 
 /**
  *
  * @author reida
  */
+@Entity
+@Table(schema = "ProjectPOO2")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) 
 public class PessoaFisica extends Pessoa {
+    @Id
+    @GeneratedValue(strategy = generetionType.SEQUENCE)
+    @Column(name = "idPessoaFisica")
+    private int id;
+    
+    @Column(nullable = false, up )
     private int cpf;
     private Date dataNasc;
     private String estadoCivil;
     private String naturalidade;
     private String nacionaldiade;
 
+    
     public PessoaFisica(int cpf, Date dataNasc, String estadoCivil, String naturalidade, String nacionaldiade, String nome, int numero, String email, String site, String endereco, Collection<Processo> processos) {
         super(nome, numero, email, site, endereco, processos);
         this.cpf = cpf;

@@ -6,7 +6,7 @@
 package Dominio;
 
 import java.util.Collection;
-
+import javax.persistence.*;
 
 /**
  *

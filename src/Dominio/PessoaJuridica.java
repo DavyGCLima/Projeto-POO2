@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package Dominio;
-import org.hibernate.*;
+//import org.hibernate.*;
+import javax.persistence.*;
 
 /**
  *
@@ -18,12 +19,19 @@ public class PessoaJuridica extends Pessoa {
     @GeneretedValue(strategy = GenerationType.SEQUENCE)
     private int id;
     
-    @Column()
+    @Column(nullable = false, insertable = true, updatable = true, unique = true)
     private int cnpj;
+    
+    @Column(insertable = true, updatable = true, nullable = false)
     private String razaoSoc;
+    
+    @Column(insertable = true, updatable = true, nullable = false)
     private String inscricaoEstadual;
+    
+    @Column(nullable = false, insertable = true, updatable = true)
     private String inscricaoMunicipal;
-
+    
+    
     public PessoaJuridica(int cnpj, String razaoSoc, String inscricaoEstadual, String inscricaoMunicipal, String nome, int numero, String email, String site, String endereco, Collection<Processo> processos) {
         super(nome, numero, email, site, endereco, processos);
         this.cnpj = cnpj;
@@ -31,7 +39,7 @@ public class PessoaJuridica extends Pessoa {
         this.inscricaoEstadual = inscricaoEstadual;
         this.inscricaoMunicipal = inscricaoMunicipal;
     }
-
+    
     public PessoaJuridica() {
     }
     
