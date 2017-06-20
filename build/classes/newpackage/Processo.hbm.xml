@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/06/2017 16:21:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="newpackage.Processo" table="processo" catalog="projectpoo2" optimistic-lock="version">
+        <id name="idProcesso" type="java.lang.Integer">
+            <column name="idProcesso" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="estado" class="newpackage.Estado" fetch="select">
+            <column name="Estado_idEstado" not-null="true" />
+        </many-to-one>
+        <many-to-one name="pagamento" class="newpackage.Pagamento" fetch="select">
+            <column name="Pagamento_PagamentoPrazo_idPagamentoPrazo" not-null="true" />
+        </many-to-one>
+        <property name="numeroProcesso" type="int">
+            <column name="numeroProcesso" not-null="true" />
+        </property>
+        <property name="titulo" type="string">
+            <column name="titulo" length="45" not-null="true" />
+        </property>
+        <property name="pasta" type="string">
+            <column name="pasta" length="45" not-null="true" />
+        </property>
+        <property name="justica" type="string">
+            <column name="justica" length="45" not-null="true" />
+        </property>
+        <property name="instancia" type="string">
+            <column name="instancia" length="45" not-null="true" />
+        </property>
+        <property name="orgao" type="string">
+            <column name="orgao" length="45" not-null="true" />
+        </property>
+        <property name="valorProcesso" type="string">
+            <column name="valorProcesso" length="45" not-null="true" />
+        </property>
+        <property name="descricao" type="string">
+            <column name="descricao" length="100" not-null="true" />
+        </property>
+        <property name="acao" type="string">
+            <column name="acao" length="45" not-null="true" />
+        </property>
+        <property name="pagamentoIdPagamento" type="int">
+            <column name="Pagamento_idPagamento" not-null="true" />
+        </property>
+        <set name="audiencias" table="audiencia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Processo_idProcesso" not-null="true" />
+            </key>
+            <one-to-many class="newpackage.Audiencia" />
+        </set>
+        <set name="pessoajuridicas" table="clientejuridico" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="Processo_idProcesso" not-null="true" />
+            </key>
+            <many-to-many entity-name="newpackage.Pessoajuridica">
+                <column name="PessoaJuridica_IdPessoaJuridica" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="processoadvogados" table="processoadvogado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Processo_idProcesso" not-null="true" />
+            </key>
+            <one-to-many class="newpackage.Processoadvogado" />
+        </set>
+        <set name="pessoafisicas" table="clientefisico" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="Processo_idProcesso" not-null="true" unique="true" />
+            </key>
+            <many-to-many entity-name="newpackage.Pessoafisica">
+                <column name="PessoaFisica" not-null="true" unique="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

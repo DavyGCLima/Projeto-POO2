@@ -7,29 +7,34 @@ package Dominio;
 
 import java.util.Collection;
 import java.util.Date;
- 
+import javax.persistence.*;
+
 /**
  *
  * @author reida
  */
 @Entity
 @Table(schema = "ProjectPOO2")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) 
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class PessoaFisica extends Pessoa {
     @Id
-    @GeneratedValue(strategy = generetionType.SEQUENCE)
-    @Column(name = "idPessoaFisica")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "idPessoaFisica", nullable = false)
     private int id;
-    
-    @Column(nullable = false, up )
+    @Column(nullable = false)
     private int cpf;
+    @Column(nullable = false)
     private Date dataNasc;
+    @Column(nullable = false, insertable = true, updatable = true, length = 45)
     private String estadoCivil;
+    @Column(nullable = false, insertable = true, updatable = true, length = 45)
     private String naturalidade;
+    @Column(nullable = false, insertable = true, updatable = true, length = 45)
     private String nacionaldiade;
 
-    
-    public PessoaFisica(int cpf, Date dataNasc, String estadoCivil, String naturalidade, String nacionaldiade, String nome, int numero, String email, String site, String endereco, Collection<Processo> processos) {
+    public PessoaFisica(int cpf, Date dataNasc, String estadoCivil, String naturalidade, 
+            String nacionaldiade, String nome, int numero, String email, String site, 
+            String endereco, Collection<Processo> processos) {
         super(nome, numero, email, site, endereco, processos);
         this.cpf = cpf;
         this.dataNasc = dataNasc;

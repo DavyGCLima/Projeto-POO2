@@ -7,17 +7,33 @@
 package Dominio;
 
 import java.util.Date;
+import javax.persistence.*;
 
 /**
  *
  * @author reida
  */
+@Entity
+@Table(schema = "ProjectPOO2")
 public class Audciencia {
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    @Column(insertable = true, nullable = false, updatable = true)
     private Date data;
+    
     private Processo processo;
 
-    public Audciencia(Date data, Processo processo) {
+    public Audciencia(Date data) {
         this.data = data;
-        this.processo = processo;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
 }

@@ -4,42 +4,41 @@
  * and open the template in the editor.
  */
 package Dominio;
-//import org.hibernate.*;
+
+import java.util.Collection;
 import javax.persistence.*;
 
 /**
  *
  * @author reida
  */
-@Entity 
+@Entity
 @Table(schema = "ProjectPOO2")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) 
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class PessoaJuridica extends Pessoa {
     @Id
-    @GeneretedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "idClienteJuridico")
     private int id;
-    
-    @Column(nullable = false, insertable = true, updatable = true, unique = true)
-    private int cnpj;
-    
-    @Column(insertable = true, updatable = true, nullable = false)
-    private String razaoSoc;
-    
-    @Column(insertable = true, updatable = true, nullable = false)
-    private String inscricaoEstadual;
-    
     @Column(nullable = false, insertable = true, updatable = true)
+    private int cnpj;
+    @Column(nullable = false, insertable = true, updatable = true, length = 45)
+    private String razaoSoc;
+    @Column(nullable = false, insertable = true, updatable = true, length = 45)
+    private String inscricaoEstadual;
+    @Column(nullable = false, insertable = true, updatable = true, length = 45)
     private String inscricaoMunicipal;
-    
-    
-    public PessoaJuridica(int cnpj, String razaoSoc, String inscricaoEstadual, String inscricaoMunicipal, String nome, int numero, String email, String site, String endereco, Collection<Processo> processos) {
+
+    public PessoaJuridica(int cnpj, String razaoSoc, String inscricaoEstadual, 
+            String inscricaoMunicipal, String nome, int numero, String email, 
+            String site, String endereco, Collection<Processo> processos) {
         super(nome, numero, email, site, endereco, processos);
         this.cnpj = cnpj;
         this.razaoSoc = razaoSoc;
         this.inscricaoEstadual = inscricaoEstadual;
         this.inscricaoMunicipal = inscricaoMunicipal;
     }
-    
+
     public PessoaJuridica() {
     }
     

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/06/2017 16:21:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="newpackage.Processoadvogado" table="processoadvogado" catalog="projectpoo2" optimistic-lock="version">
+        <composite-id name="id" class="newpackage.ProcessoadvogadoId">
+            <key-property name="advogadoPessoaJuridicaIdPessoaJuridica" type="int">
+                <column name="Advogado_PessoaJuridica_idPessoaJuridica" />
+            </key-property>
+            <key-property name="processoIdProcesso" type="int">
+                <column name="Processo_idProcesso" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="processo" class="newpackage.Processo" update="false" insert="false" fetch="select">
+            <column name="Processo_idProcesso" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

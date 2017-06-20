@@ -20,7 +20,9 @@ public class PagamentoPrazo extends Pagamento {
     public PagamentoPrazo() {
     }
 
-    public PagamentoPrazo(double valorParc, String modoPagamento, Collection<Parcela> parcelas, Date dataPagamento, double valorTotal, Collection<Processo> processos) {
+    public PagamentoPrazo(double valorParc, String modoPagamento, 
+            Collection<Parcela> parcelas, Date dataPagamento, double valorTotal, 
+            Collection<Processo> processos) {
         super(dataPagamento, valorTotal, processos);
         this.valorParc = valorParc;
         this.modoPagamento = modoPagamento;

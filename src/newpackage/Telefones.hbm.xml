@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/06/2017 16:21:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="newpackage.Telefones" table="telefones" catalog="projectpoo2" optimistic-lock="version">
+        <id name="idtelefones" type="java.lang.Integer">
+            <column name="idtelefones" />
+            <generator class="identity" />
+        </id>
+        <property name="numero" type="int">
+            <column name="numero" not-null="true" />
+        </property>
+        <set name="pessoajuridicas" table="pessoajuridica" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="telefones_idtelefones" not-null="true" />
+            </key>
+            <one-to-many class="newpackage.Pessoajuridica" />
+        </set>
+        <set name="pessoafisicas" table="pessoafisica" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="telefones_idtelefones" not-null="true" />
+            </key>
+            <one-to-many class="newpackage.Pessoafisica" />
+        </set>
+    </class>
+</hibernate-mapping>

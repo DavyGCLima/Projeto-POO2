@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/06/2017 16:21:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="newpackage.Uf" table="uf" catalog="projectpoo2" optimistic-lock="version">
+        <id name="idUf" type="java.lang.Integer">
+            <column name="idUF" />
+            <generator class="identity" />
+        </id>
+        <property name="nomeUf" type="string">
+            <column name="nomeUF" length="45" not-null="true" />
+        </property>
+        <set name="cidades" table="cidade" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="UF_idUF" not-null="true" />
+            </key>
+            <one-to-many class="newpackage.Cidade" />
+        </set>
+    </class>
+</hibernate-mapping>

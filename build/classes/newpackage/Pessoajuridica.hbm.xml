@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/06/2017 16:21:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="newpackage.Pessoajuridica" table="pessoajuridica" catalog="projectpoo2" optimistic-lock="version">
+        <id name="idPessoaJuridica" type="java.lang.Integer">
+            <column name="IdPessoaJuridica" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="emails" class="newpackage.Emails" fetch="select">
+            <column name="Emails_idEmails" not-null="true" />
+        </many-to-one>
+        <many-to-one name="endereco" class="newpackage.Endereco" fetch="select">
+            <column name="Endereco_cep" not-null="true" />
+        </many-to-one>
+        <many-to-one name="telefones" class="newpackage.Telefones" fetch="select">
+            <column name="telefones_idtelefones" not-null="true" />
+        </many-to-one>
+        <property name="nomePessoaJuridica" type="string">
+            <column name="nomePessoaJuridica" length="45" not-null="true" />
+        </property>
+        <property name="site" type="string">
+            <column name="site" length="45" />
+        </property>
+        <property name="cnpj" type="int">
+            <column name="cnpj" not-null="true" />
+        </property>
+        <property name="razaoSocial" type="string">
+            <column name="razaoSocial" length="45" not-null="true" />
+        </property>
+        <property name="inscricaoEstadual" type="string">
+            <column name="inscricaoEstadual" length="45" not-null="true" />
+        </property>
+        <property name="inscricaoMunicipal" type="string">
+            <column name="inscricaoMunicipal" length="45" not-null="true" />
+        </property>
+        <set name="processos" table="clientejuridico" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="PessoaJuridica_IdPessoaJuridica" not-null="true" />
+            </key>
+            <many-to-many entity-name="newpackage.Processo">
+                <column name="Processo_idProcesso" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

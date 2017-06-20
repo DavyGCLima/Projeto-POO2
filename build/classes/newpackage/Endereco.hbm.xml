@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/06/2017 16:21:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="newpackage.Endereco" table="endereco" catalog="projectpoo2" optimistic-lock="version">
+        <id name="idEndereco" type="java.lang.Integer">
+            <column name="idEndereco" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="logradouro" class="newpackage.Logradouro" fetch="select">
+            <column name="logradouro_idtable1" not-null="true" />
+        </many-to-one>
+        <property name="ncasa" type="int">
+            <column name="nCasa" not-null="true" />
+        </property>
+        <set name="pessoafisicas" table="pessoafisica" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Endereco_cep" not-null="true" />
+            </key>
+            <one-to-many class="newpackage.Pessoafisica" />
+        </set>
+        <set name="pessoajuridicas" table="pessoajuridica" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Endereco_cep" not-null="true" />
+            </key>
+            <one-to-many class="newpackage.Pessoajuridica" />
+        </set>
+    </class>
+</hibernate-mapping>

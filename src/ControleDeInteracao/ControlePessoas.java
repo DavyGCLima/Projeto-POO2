@@ -10,5 +10,8 @@ package ControleDeInteracao;
  * @author Davy-san
  */
 public class ControlePessoas {
+
+    public ControlePessoas() {
+    }
     
 }

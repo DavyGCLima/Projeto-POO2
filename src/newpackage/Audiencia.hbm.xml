@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/06/2017 16:21:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="newpackage.Audiencia" table="audiencia" catalog="projectpoo2" optimistic-lock="version">
+        <id name="idAudiencia" type="java.lang.Integer">
+            <column name="idAudiencia" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="processo" class="newpackage.Processo" fetch="select">
+            <column name="Processo_idProcesso" not-null="true" />
+        </many-to-one>
+        <property name="dataAudiencia" type="date">
+            <column name="dataAudiencia" length="10" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

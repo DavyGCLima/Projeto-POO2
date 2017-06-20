@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/06/2017 16:21:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="newpackage.Pessoafisica" table="pessoafisica" catalog="projectpoo2" optimistic-lock="version">
+        <id name="idPessoaFisica" type="java.lang.Integer">
+            <column name="IdPessoaFisica" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="emails" class="newpackage.Emails" fetch="select">
+            <column name="Emails_idEmails" not-null="true" />
+        </many-to-one>
+        <many-to-one name="endereco" class="newpackage.Endereco" fetch="select">
+            <column name="Endereco_cep" not-null="true" />
+        </many-to-one>
+        <many-to-one name="telefones" class="newpackage.Telefones" fetch="select">
+            <column name="telefones_idtelefones" not-null="true" />
+        </many-to-one>
+        <property name="nomePrssoaFisica" type="string">
+            <column name="nomePrssoaFIsica" length="45" not-null="true" />
+        </property>
+        <property name="site" type="string">
+            <column name="site" length="45" />
+        </property>
+        <property name="cpf" type="int">
+            <column name="cpf" not-null="true" />
+        </property>
+        <property name="dataNascimento" type="date">
+            <column name="dataNascimento" length="10" not-null="true" />
+        </property>
+        <property name="estadoCivil" type="string">
+            <column name="estadoCivil" length="45" not-null="true" />
+        </property>
+        <property name="naturalidade" type="string">
+            <column name="naturalidade" length="45" not-null="true" />
+        </property>
+        <property name="nacionalidade" type="string">
+            <column name="nacionalidade" length="45" not-null="true" />
+        </property>
+        <set name="advogados" table="advogado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PessoaFisica_IdPessoaFisica" not-null="true" />
+            </key>
+            <one-to-many class="newpackage.Advogado" />
+        </set>
+        <set name="processos" table="clientefisico" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="PessoaFisica" not-null="true" unique="true" />
+            </key>
+            <many-to-many entity-name="newpackage.Processo">
+                <column name="Processo_idProcesso" not-null="true" unique="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

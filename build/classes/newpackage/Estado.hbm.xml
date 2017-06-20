@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/06/2017 16:21:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="newpackage.Estado" table="estado" catalog="projectpoo2" optimistic-lock="version">
+        <id name="idEstado" type="java.lang.Integer">
+            <column name="idEstado" />
+            <generator class="identity" />
+        </id>
+        <property name="nomeEstato" type="string">
+            <column name="nomeEstato" length="45" not-null="true" />
+        </property>
+        <set name="processos" table="processo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Estado_idEstado" not-null="true" />
+            </key>
+            <one-to-many class="newpackage.Processo" />
+        </set>
+        <set name="estadosForEstadoIdEstado" table="estadospossiveis" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="EstadoRelacionado" not-null="true" />
+            </key>
+            <many-to-many entity-name="newpackage.Estado">
+                <column name="Estado_idEstado" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="estadosForEstadoRelacionado" table="estadospossiveis" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="Estado_idEstado" not-null="true" />
+            </key>
+            <many-to-many entity-name="newpackage.Estado">
+                <column name="EstadoRelacionado" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

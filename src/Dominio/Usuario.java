@@ -4,45 +4,29 @@
  * and open the template in the editor.
  */
 package Dominio;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
+import javax.persistence.*;
 /**
  *
  * @author reida
  */
+@Entity
+@Table(name = "usuario")
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name="idProcesso")
-    private int idProcesso;
-    
-    @Column(unique = true, insertable = true, updatable = true, length = 16, nullable = true)
-    private String login;
-    
-    @Column(insertable = true, updatable = true, length = 16, nullable = true)
+    @Column(name = "idUsuario")
+    private int id;    
+    @Column(nullable = false, updatable = true, insertable = true, length = 16)
+    private String login;    
+    @Column(nullable = false, updatable = true, insertable = true, length = 16)
     private String senha;
-    
-    
-    public Usuario() {
-    }
 
-    public Usuario(int idProcesso, String login, String senha) {
-        this.idProcesso = idProcesso;
-        this.login = login;
-        this.senha = senha;
+    public Usuario() {
     }
 
     public Usuario(String login, String senha) {
         this.login = login;
         this.senha = senha;
-    }
-
-    public int getIdProcesso() {
-        return idProcesso;
     }
 
     public String getLogin() {
@@ -53,10 +37,6 @@ public class Usuario {
         return senha;
     }
 
-    public void setIdProcesso(int idProcesso) {
-        this.idProcesso = idProcesso;
-    }
-
     public void setLogin(String login) {
         this.login = login;
     }
@@ -64,6 +44,14 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+   
     
 }

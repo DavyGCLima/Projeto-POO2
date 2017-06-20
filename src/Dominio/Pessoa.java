@@ -8,6 +8,7 @@ package Dominio;
 import java.util.Collection;
 import javax.persistence.*;
 
+
 /**
  *
  * @author reida
@@ -16,30 +17,26 @@ import javax.persistence.*;
 public abstract class Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name="idPessoa")
-    private int idPessoa;
-    
-    @Column(insertable = true, updatable = true, length = 45, nullable = true)
+    @Column(name = "idPessoa")
+    private int id;
+    @Column(nullable = false, insertable = true, updatable = true, length = 45)
     private String nome;
-    
-    @Column(insertable = true, updatable = true, nullable = true)
+    @Column(nullable = false, insertable = true, updatable = true)
     private int numero;
-    
-    @Column(insertable = true, updatable = true, length = 45, nullable = true)
+    @Column(nullable = false, insertable = true, updatable = true, length = 45)
     private String email;
-    
-    @Column(insertable = true, updatable = true, length = 45, nullable = true)
+    @Column(nullable = false, insertable = true, updatable = true, length = 45)
     private String site;
-    
-    @Column(insertable = true, updatable = true, length = 45, nullable = true)
+    @Column(nullable = false, insertable = true, updatable = true, length = 45)
     private String endereco;
-    
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "Cliente", schema = "ProjectPOO2", joinColumns = @JoinColumn(name = "idPessoa"),
-            inverseJoinColumns = @JoinColumn(name = "idProcesso"))
+    @JoinTable(name = "Cliente", schema = "ProjectPOO2",
+            joinColumns ={@JoinColumn(name = "idPessoa")},
+            inverseJoinColumns = {@JoinColumn(name = "idProcesso")})
     private Collection<Processo> processos;
 
-    public Pessoa(String nome, int numero, String email, String site, String endereco, Collection<Processo> processos) {
+    public Pessoa(String nome, int numero, String email, String site, 
+            String endereco, Collection<Processo> processos) {
         this.nome = nome;
         this.numero = numero;
         this.email = email;

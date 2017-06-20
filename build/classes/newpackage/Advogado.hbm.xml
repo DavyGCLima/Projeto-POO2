@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/06/2017 16:21:09 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="newpackage.Advogado" table="advogado" catalog="projectpoo2" optimistic-lock="version">
+        <id name="idAdvogado" type="java.lang.Integer">
+            <column name="idAdvogado" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="pessoafisica" class="newpackage.Pessoafisica" fetch="select">
+            <column name="PessoaFisica_IdPessoaFisica" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="newpackage.Usuario" fetch="select">
+            <column name="Usuario_idUsuario" not-null="true" />
+        </many-to-one>
+        <property name="oab" type="string">
+            <column name="oab" length="45" not-null="true" unique="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -5,12 +5,16 @@
  */
 package InterfaceDeUsuario;
 
+import ControleDeInteracao.ControlePrincipal;
+
 import InterfaceDeUsuario.Advogados.GerenciarAdvogados;
 import InterfaceDeUsuario.Advogados.TCadastrarAdvogados;
 import InterfaceDeUsuario.Pessoas.GerenciarPessoas;
 import InterfaceDeUsuario.Pessoas.TCadPessoa;
 import InterfaceDeUsuario.Processos.CadastroProcesso;
 import InterfaceDeUsuario.Processos.GerenciarProcesso;
+
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JDesktopPane;
@@ -31,7 +35,8 @@ public class Jprincipal extends javax.swing.JFrame implements ActionListener{
      * Creates new form Jprincipal
      */
     public Jprincipal() {
-        initComponents();        
+        initComponents();
+        ControleDeInteracao.ControlePrincipal CtrlPrincipal = new ControlePrincipal();
     }
 
     /**
@@ -44,7 +49,7 @@ public class Jprincipal extends javax.swing.JFrame implements ActionListener{
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnCadastro = new javax.swing.JButton();
+        btnCadastroPessoa = new javax.swing.JButton();
         btnCadProcesso = new javax.swing.JButton();
         desktopPane = new javax.swing.JDesktopPane();
         btnGerenciarPessoas = new javax.swing.JButton();
@@ -57,10 +62,10 @@ public class Jprincipal extends javax.swing.JFrame implements ActionListener{
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        btnCadastro.setText("Cadastro de Pessoa");
-        btnCadastro.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastroPessoa.setText("Cadastro de Pessoa");
+        btnCadastroPessoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastroActionPerformed(evt);
+                btnCadastroPessoaActionPerformed(evt);
             }
         });
 
@@ -118,7 +123,7 @@ public class Jprincipal extends javax.swing.JFrame implements ActionListener{
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(btnCadastro)
+                .addComponent(btnCadastroPessoa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGerenciarPessoas, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -139,7 +144,7 @@ public class Jprincipal extends javax.swing.JFrame implements ActionListener{
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                    .addComponent(btnCadastroPessoa, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
                     .addComponent(btnGerenciarPessoas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCadProcesso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnGerenciaProcesso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -156,8 +161,8 @@ public class Jprincipal extends javax.swing.JFrame implements ActionListener{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
-        if (TcadCliente == null) {
+    private void btnCadastroPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroPessoaActionPerformed
+        /*if (TcadCliente == null) {
             TcadCliente = new TCadPessoa("Casastro", this);
             desktopPane.add(TcadCliente);
             TcadCliente.setDefaultCloseOperation(HIDE_ON_CLOSE);            
@@ -168,8 +173,9 @@ public class Jprincipal extends javax.swing.JFrame implements ActionListener{
             TcadCliente.setDefaultCloseOperation(HIDE_ON_CLOSE); 
         }
         TcadCliente.setVisible(true);
-        desktopPane.moveToFront(TcadCliente);
-    }//GEN-LAST:event_btnCadastroActionPerformed
+        desktopPane.moveToFront(TcadCliente);*/
+        
+    }//GEN-LAST:event_btnCadastroPessoaActionPerformed
 
     private void btnGerenciarPessoasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciarPessoasActionPerformed
         if(TgerenPessoas == null){
@@ -253,7 +259,7 @@ public class Jprincipal extends javax.swing.JFrame implements ActionListener{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadAdvogado;
     private javax.swing.JButton btnCadProcesso;
-    private javax.swing.JButton btnCadastro;
+    private javax.swing.JButton btnCadastroPessoa;
     private javax.swing.JButton btnGenrenciarAdvogado;
     private javax.swing.JButton btnGerenciaProcesso;
     private javax.swing.JButton btnGerenciarPessoas;
