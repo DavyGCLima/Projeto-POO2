@@ -16,7 +16,7 @@ public class GerenciarProcesso extends javax.swing.JInternalFrame {
     /**
      * Creates new form TGerenciarProcesso
      */
-    public GerenciarProcesso(String titulo, Jprincipal JanelaP) {
+    public GerenciarProcesso(String titulo) {
         super(titulo, true, true, true, true);
         initComponents();
     }

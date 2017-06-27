@@ -11,7 +11,9 @@ package ControleDeInteracao;
  */
 public class ControlePagamento {
 
-    public ControlePagamento() {
+    ControlePrincipal ctrl;
+    public ControlePagamento(ControlePrincipal ctrl) {
+        this.ctrl = ctrl;
     }
     
 }

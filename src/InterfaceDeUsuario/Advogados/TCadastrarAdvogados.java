@@ -5,7 +5,6 @@
  */
 package InterfaceDeUsuario.Advogados;
 
-import InterfaceDeUsuario.Jprincipal;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,7 +16,7 @@ public class TCadastrarAdvogados extends javax.swing.JInternalFrame {
     /**
      * Creates new form TCadastrarAdvogados
      */
-    public TCadastrarAdvogados(String titulo, Jprincipal JanelaP ) {
+    public TCadastrarAdvogados(String titulo) {
         super(titulo, true, true, true, true);
         initComponents();
     }
@@ -72,9 +71,9 @@ public class TCadastrarAdvogados extends javax.swing.JInternalFrame {
                 .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(btnProcurar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 364, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
                 .addComponent(btnCancelar)
-                .addGap(26, 26, 26))
+                .addContainerGap(356, Short.MAX_VALUE))
         );
         jpBuscaLayout.setVerticalGroup(
             jpBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,7 +126,7 @@ public class TCadastrarAdvogados extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(txtOAB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 15, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

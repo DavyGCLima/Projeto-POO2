@@ -17,7 +17,7 @@ public class GerenciarAdvogados extends javax.swing.JInternalFrame {
     /**
      * Creates new form GerenciarAdvogados
      */
-    public GerenciarAdvogados(String titulo, Jprincipal JanelaPrincipal) {
+    public GerenciarAdvogados(String titulo) {
         super(titulo, true, true, true, true);
         initComponents();
     }

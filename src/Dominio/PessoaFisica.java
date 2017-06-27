@@ -5,6 +5,7 @@
  */
 package Dominio;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.*;
@@ -16,32 +17,44 @@ import javax.persistence.*;
 @Entity
 @Table(schema = "ProjectPOO2")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class PessoaFisica extends Pessoa {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "idPessoaFisica", nullable = false)
-    private int id;
+public class PessoaFisica extends Pessoa implements Serializable {
+    
     @Column(nullable = false)
     private int cpf;
+    
     @Column(nullable = false)
     private Date dataNasc;
+    
     @Column(nullable = false, insertable = true, updatable = true, length = 45)
     private String estadoCivil;
+    
     @Column(nullable = false, insertable = true, updatable = true, length = 45)
     private String naturalidade;
+   
     @Column(nullable = false, insertable = true, updatable = true, length = 45)
     private String nacionaldiade;
 
     public PessoaFisica(int cpf, Date dataNasc, String estadoCivil, String naturalidade, 
-            String nacionaldiade, String nome, int numero, String email, String site, 
-            String endereco, Collection<Processo> processos) {
+            String nacionaldiade, String nome, int numero, String email, String site, Endereco endereco, 
+            Collection<Processo> processos) {
         super(nome, numero, email, site, endereco, processos);
         this.cpf = cpf;
         this.dataNasc = dataNasc;
         this.estadoCivil = estadoCivil;
         this.naturalidade = naturalidade;
         this.nacionaldiade = nacionaldiade;
-    }    
+    }
+
+    public PessoaFisica(int cpf, Date dataNasc, String estadoCivil, String naturalidade, String nacionaldiade, String nome, int numero, String email, String site, Endereco endereco) {
+        super(nome, numero, email, site, endereco);
+        this.cpf = cpf;
+        this.dataNasc = dataNasc;
+        this.estadoCivil = estadoCivil;
+        this.naturalidade = naturalidade;
+        this.nacionaldiade = nacionaldiade;
+    }
+    
+    
 
     public PessoaFisica() {
     }

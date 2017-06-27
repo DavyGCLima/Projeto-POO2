@@ -31,12 +31,15 @@ public class Jprincipal extends javax.swing.JFrame implements ActionListener{
     GerenciarProcesso TgerenciarProcesso;
     TCadastrarAdvogados TCadAdvogado;
     GerenciarAdvogados genreciarAdvogado;
+    
+    private ControlePrincipal ctrlPrincipal;
     /**
      * Creates new form Jprincipal
      */
-    public Jprincipal() {
+    public Jprincipal(ControlePrincipal ctrlPrincipal) {
         initComponents();
-        ControleDeInteracao.ControlePrincipal CtrlPrincipal = new ControlePrincipal();
+        //ctrlPrincipal = new ControlePrincipal(desktopPane);
+        this.ctrlPrincipal = ctrlPrincipal;
     }
 
     /**
@@ -52,6 +55,7 @@ public class Jprincipal extends javax.swing.JFrame implements ActionListener{
         btnCadastroPessoa = new javax.swing.JButton();
         btnCadProcesso = new javax.swing.JButton();
         desktopPane = new javax.swing.JDesktopPane();
+        jSeparator2 = new javax.swing.JSeparator();
         btnGerenciarPessoas = new javax.swing.JButton();
         btnGerenciaProcesso = new javax.swing.JButton();
         btnCadAdvogado = new javax.swing.JButton();
@@ -78,15 +82,21 @@ public class Jprincipal extends javax.swing.JFrame implements ActionListener{
 
         desktopPane.setBackground(new java.awt.Color(240, 240, 240));
 
+        desktopPane.setLayer(jSeparator2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
         desktopPane.setLayout(desktopPaneLayout);
         desktopPaneLayout.setHorizontalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1261, Short.MAX_VALUE)
+            .addGroup(desktopPaneLayout.createSequentialGroup()
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 1261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         desktopPaneLayout.setVerticalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 559, Short.MAX_VALUE)
+            .addGroup(desktopPaneLayout.createSequentialGroup()
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 557, Short.MAX_VALUE))
         );
 
         btnGerenciarPessoas.setText("Gerenciar Pessoas");
@@ -120,135 +130,68 @@ public class Jprincipal extends javax.swing.JFrame implements ActionListener{
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(btnCadastroPessoa)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(btnGerenciarPessoas, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(btnCadProcesso)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGerenciaProcesso, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCadAdvogado, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGenrenciarAdvogado, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(desktopPane)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCadastroPessoa, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                    .addComponent(btnGerenciarPessoas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCadProcesso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnGerenciaProcesso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCadAdvogado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnGenrenciarAdvogado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(btnCadastroPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGerenciarPessoas, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnCadProcesso, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGerenciaProcesso, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCadAdvogado, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGenrenciarAdvogado, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(6, 6, 6)
                 .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         desktopPane.getAccessibleContext().setAccessibleName("");
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastroPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroPessoaActionPerformed
-        /*if (TcadCliente == null) {
-            TcadCliente = new TCadPessoa("Casastro", this);
-            desktopPane.add(TcadCliente);
-            TcadCliente.setDefaultCloseOperation(HIDE_ON_CLOSE);            
-        }
-       if(TcadCliente.isClosed()){
-            TcadCliente = new TCadPessoa("Casastro", this);
-            desktopPane.add(TcadCliente);
-            TcadCliente.setDefaultCloseOperation(HIDE_ON_CLOSE); 
-        }
-        TcadCliente.setVisible(true);
-        desktopPane.moveToFront(TcadCliente);*/
-        
+        ctrlPrincipal.AbrirCadastroDePEssoas();
     }//GEN-LAST:event_btnCadastroPessoaActionPerformed
 
     private void btnGerenciarPessoasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciarPessoasActionPerformed
-        if(TgerenPessoas == null){
-           TgerenPessoas = new GerenciarPessoas("Cadastro", this);
-           desktopPane.add(TgerenPessoas);
-           TgerenPessoas.setDefaultCloseOperation(HIDE_ON_CLOSE); 
-        }
-        if(TgerenPessoas.isClosed()){
-            TgerenPessoas = new GerenciarPessoas("Cadastro", this);
-            desktopPane.add(TgerenPessoas);
-            TgerenPessoas.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        }
-       TgerenPessoas.moveToFront();
-       TgerenPessoas.setVisible(true);      
+        ctrlPrincipal.AbrirGerenciaDePessoas();
     }//GEN-LAST:event_btnGerenciarPessoasActionPerformed
 
     private void btnGerenciaProcessoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenciaProcessoActionPerformed
-        if(TgerenciarProcesso == null){
-            TgerenciarProcesso = new GerenciarProcesso("Gerenciar Processo", this);
-            desktopPane.add(TgerenciarProcesso);
-            TgerenciarProcesso.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        }
-        if(TgerenciarProcesso.isClosed()){
-            TgerenciarProcesso = new GerenciarProcesso("Gerenciar Processo", this);
-            desktopPane.add(TgerenciarProcesso);
-            TgerenciarProcesso.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        }
-        TgerenciarProcesso.moveToFront();
-        TgerenciarProcesso.setVisible(true);
+        ctrlPrincipal.AbrirGerenciaProcesso();
     }//GEN-LAST:event_btnGerenciaProcessoActionPerformed
 
     private void btnCadProcessoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadProcessoActionPerformed
-         if(TcadProcesso == null){
-            TcadProcesso = new CadastroProcesso("Cadastrar Processo", this);
-            desktopPane.add(TcadProcesso);
-            TcadProcesso.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        }
-        if(TcadProcesso.isClosed()){
-            TcadProcesso = new CadastroProcesso("Cadastrar Processo", this);
-            desktopPane.add(TcadProcesso);
-            TcadProcesso.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        }
-        TcadProcesso.setVisible(true);           
+         ctrlPrincipal.AbrirCadastroProcesso();
     }//GEN-LAST:event_btnCadProcessoActionPerformed
 
     private void btnCadAdvogadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadAdvogadoActionPerformed
-        if(TCadAdvogado == null){
-            TCadAdvogado = new TCadastrarAdvogados("Cadastro de Advogados", this);
-            desktopPane.add(TCadAdvogado);
-            TCadAdvogado.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        }
-        if(TCadAdvogado.isClosed()){
-            TCadAdvogado = new TCadastrarAdvogados("Cadastro de Advogados", this);
-              desktopPane.add(TCadAdvogado);
-              TCadAdvogado.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        }
-        TCadAdvogado.setVisible(true);
-        TCadAdvogado.moveToFront();
+        ctrlPrincipal.AbrirCadastroAdvogado();
     }//GEN-LAST:event_btnCadAdvogadoActionPerformed
 
     private void btnGenrenciarAdvogadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenrenciarAdvogadoActionPerformed
-        if(genreciarAdvogado == null){
-            genreciarAdvogado = new GerenciarAdvogados("Gerencia de Advogados", this);
-            desktopPane.add(genreciarAdvogado);
-            genreciarAdvogado.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        }
-        if(genreciarAdvogado.isClosed()){
-            genreciarAdvogado = new GerenciarAdvogados("Gerencia de Advogados", this);
-            desktopPane.add(genreciarAdvogado);
-            genreciarAdvogado.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        }
-        genreciarAdvogado.setVisible(true);
-        genreciarAdvogado.moveToFront();
+        ctrlPrincipal.AbriGerenciaAdvogados();
     }//GEN-LAST:event_btnGenrenciarAdvogadoActionPerformed
 
     @Override
@@ -265,6 +208,7 @@ public class Jprincipal extends javax.swing.JFrame implements ActionListener{
     private javax.swing.JButton btnGerenciarPessoas;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 
     public JDesktopPane getDesktopPane() {

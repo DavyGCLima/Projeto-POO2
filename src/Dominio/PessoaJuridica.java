@@ -16,22 +16,20 @@ import javax.persistence.*;
 @Table(schema = "ProjectPOO2")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class PessoaJuridica extends Pessoa {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "idClienteJuridico")
-    private int id;
+   
     @Column(nullable = false, insertable = true, updatable = true)
     private int cnpj;
+    
     @Column(nullable = false, insertable = true, updatable = true, length = 45)
     private String razaoSoc;
+    
     @Column(nullable = false, insertable = true, updatable = true, length = 45)
     private String inscricaoEstadual;
+    
     @Column(nullable = false, insertable = true, updatable = true, length = 45)
     private String inscricaoMunicipal;
 
-    public PessoaJuridica(int cnpj, String razaoSoc, String inscricaoEstadual, 
-            String inscricaoMunicipal, String nome, int numero, String email, 
-            String site, String endereco, Collection<Processo> processos) {
+    public PessoaJuridica(int cnpj, String razaoSoc, String inscricaoEstadual, String inscricaoMunicipal, String nome, int numero, String email, String site, Endereco endereco, Collection<Processo> processos) {
         super(nome, numero, email, site, endereco, processos);
         this.cnpj = cnpj;
         this.razaoSoc = razaoSoc;
@@ -39,6 +37,9 @@ public class PessoaJuridica extends Pessoa {
         this.inscricaoMunicipal = inscricaoMunicipal;
     }
 
+    
+
+   
     public PessoaJuridica() {
     }
     

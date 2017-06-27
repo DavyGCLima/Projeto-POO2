@@ -5,17 +5,44 @@
  */
 package InterfaceDeUsuario.Pessoas;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Davy-san
  */
 public class PainelCadastroPessoaFIsica extends javax.swing.JPanel {
-
+    ControleDeInteracao.ControlePrincipal ctrl;
+    String nome, telefone, email, uf, cidade, bairro, cep, rua, numeroCasa ;
     /**
      * Creates new form PainelCadastroPessoaFIsica
+     * @param ctrlP
+     * @param nome
+     * @param uf
+     * @param cidade
+     * @param bairro
+     * @param rua
+     * @param cep
+     * @param numeroCasa
+     * @param telefone
+     * @param email
      */
-    public PainelCadastroPessoaFIsica() {
+    public PainelCadastroPessoaFIsica(ControleDeInteracao.ControlePrincipal ctrlP,
+            String nome, String uf, String cidade, String bairro, String rua, String cep, String numeroCasa,
+            String telefone, String email) {
+        ctrl = ctrlP;
         initComponents();
+        this.nome = nome;
+        this.uf = uf;
+        this.cidade = cidade;
+        this.bairro = bairro;
+        this.cep = cep;
+        this.rua = rua;
+        this.numeroCasa = numeroCasa;
+        this.telefone = telefone;
+        this.email = email;
     }
 
     /**
@@ -38,8 +65,8 @@ public class PainelCadastroPessoaFIsica extends javax.swing.JPanel {
         txtEstadoCiv = new javax.swing.JTextField();
         btnSalvar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        comBoxNacionalidade = new javax.swing.JComboBox<>();
         txtNaturalidade = new javax.swing.JTextField();
+        txtNacionalidade = new javax.swing.JTextField();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Pessoa Física"));
 
@@ -54,10 +81,13 @@ public class PainelCadastroPessoaFIsica extends javax.swing.JPanel {
         lblNacionalidade.setText("Nacionalidade");
 
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
-
-        comBoxNacionalidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -83,8 +113,8 @@ public class PainelCadastroPessoaFIsica extends javax.swing.JPanel {
                             .addComponent(lblNacionalidade))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comBoxNacionalidade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtNaturalidade))))
+                            .addComponent(txtNaturalidade)
+                            .addComponent(txtNacionalidade))))
                 .addGap(82, 82, 82))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(106, 106, 106)
@@ -115,12 +145,12 @@ public class PainelCadastroPessoaFIsica extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNacionalidade)
-                    .addComponent(comBoxNacionalidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNacionalidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18))
+                .addGap(12, 12, 12))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -133,15 +163,38 @@ public class PainelCadastroPessoaFIsica extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        List<String> erros;
+        erros = new ArrayList<>();
+        if(txtCPF.getText().equals(""))
+            erros.add("CPF");
+        if(txtEstadoCiv.getText().equals(""))
+            erros.add("Estado Civil");
+        if(txtNacionalidade.getText().equals(""))
+            erros.add("Nacionalidade");
+        if(txtNascimento.getText().equals(""))
+            erros.add("Data de Nascimento");
+        if(txtNaturalidade.getText().equals(""))
+            erros.add("Naturalidade");
+        if(erros.isEmpty())
+            ctrl.getGTPrincipal().getGTPessoas().cadastrarPessoaFisica(nome, uf, cidade,
+                    bairro, rua, cep, numeroCasa, telefone, email,
+                    txtCPF.getText(), txtNascimento.getText(), txtEstadoCiv.getText(),
+                    txtNacionalidade.getText(), txtNacionalidade.getText());
+        else{
+            
+        }
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JComboBox<String> comBoxNacionalidade;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCPF;
     private javax.swing.JLabel lblEstadoCiv;
@@ -150,6 +203,7 @@ public class PainelCadastroPessoaFIsica extends javax.swing.JPanel {
     private javax.swing.JLabel lblNaturalidade;
     private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtEstadoCiv;
+    private javax.swing.JTextField txtNacionalidade;
     private javax.swing.JTextField txtNascimento;
     private javax.swing.JTextField txtNaturalidade;
     // End of variables declaration//GEN-END:variables

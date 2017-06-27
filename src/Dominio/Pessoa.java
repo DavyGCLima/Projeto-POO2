@@ -7,6 +7,9 @@ package Dominio;
 
 import java.util.Collection;
 import javax.persistence.*;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 
 /**
@@ -15,28 +18,35 @@ import javax.persistence.*;
  */
 @MappedSuperclass
 public abstract class Pessoa {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "idPessoa")
-    private int id;
+    
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private int idPessoa;
+ 
     @Column(nullable = false, insertable = true, updatable = true, length = 45)
     private String nome;
+    
     @Column(nullable = false, insertable = true, updatable = true)
     private int numero;
+    
     @Column(nullable = false, insertable = true, updatable = true, length = 45)
     private String email;
+    
     @Column(nullable = false, insertable = true, updatable = true, length = 45)
     private String site;
-    @Column(nullable = false, insertable = true, updatable = true, length = 45)
-    private String endereco;
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "Cliente", schema = "ProjectPOO2",
-            joinColumns ={@JoinColumn(name = "idPessoa")},
-            inverseJoinColumns = {@JoinColumn(name = "idProcesso")})
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idEndereco", insertable = true, updatable = true)
+    @Fetch(FetchMode.JOIN)
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    private Endereco endereco;
+    
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "cliente")
+//    @JoinTable(name = "Cliente", schema = "ProjectPOO2",
+//            joinColumns ={@JoinColumn(name = "idPessoa")},
+//            inverseJoinColumns = {@JoinColumn(name = "idProcesso")})
     private Collection<Processo> processos;
 
-    public Pessoa(String nome, int numero, String email, String site, 
-            String endereco, Collection<Processo> processos) {
+    public Pessoa(String nome, int numero, String email, String site, Endereco endereco, Collection<Processo> processos) {
         this.nome = nome;
         this.numero = numero;
         this.email = email;
@@ -45,9 +55,20 @@ public abstract class Pessoa {
         this.processos = processos;
     }
 
-    public Pessoa() {
+    public Pessoa(String nome, int numero, String email, String site, Endereco endereco) {
+        this.idPessoa = idPessoa;
+        this.nome = nome;
+        this.numero = numero;
+        this.email = email;
+        this.site = site;
+        this.endereco = endereco;
     }
     
+    
+
+
+    public Pessoa() {
+    }    
     
     
     public String getNome() {
@@ -66,7 +87,7 @@ public abstract class Pessoa {
         return site;
     }
 
-    public String getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
@@ -86,7 +107,7 @@ public abstract class Pessoa {
         this.site = site;
     }
 
-    public void setEndereco(String endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 }

@@ -1,24 +1,23 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 19/06/2017 16:21:09 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="newpackage.Logradouro" table="logradouro" catalog="projectpoo2" optimistic-lock="version">
-        <id name="cep" type="int">
-            <column name="cep" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="bairro" class="newpackage.Bairro" fetch="select">
-            <column name="bairro_idbairro" not-null="true" />
-        </many-to-one>
-        <property name="nomeLogradouro" type="string">
-            <column name="nomeLogradouro" length="45" not-null="true" />
-        </property>
-        <set name="enderecos" table="endereco" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="logradouro_idtable1" not-null="true" />
-            </key>
-            <one-to-many class="newpackage.Endereco" />
-        </set>
-    </class>
+  <class catalog="projectpoo2" name="Dominio.Logradouro" optimistic-lock="version" table="logradouro">
+    <id name="cep" type="int">
+      <column name="cep"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="Dominio.Bairro" fetch="select" name="bairro">
+      <column name="bairro_idbairro" not-null="true"/>
+    </many-to-one>
+    <property name="nomeLogradouro" type="string">
+      <column length="45" name="nomeLogradouro" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="enderecos" table="endereco">
+      <key>
+        <column name="logradouro_idtable1" not-null="true"/>
+      </key>
+      <one-to-many class="Dominio.Endereco"/>
+    </set>
+  </class>
 </hibernate-mapping>

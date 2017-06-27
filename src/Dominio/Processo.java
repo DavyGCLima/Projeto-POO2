@@ -5,6 +5,7 @@
  */
 package Dominio;
 
+import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.*;
 import org.hibernate.annotations.Cascade;
@@ -16,54 +17,72 @@ import org.hibernate.annotations.FetchMode;
  */
 @Entity
 @Table(name = "Processo")
-public class Processo {
+public class Processo implements Serializable {
     @Column(nullable = false, updatable = true, insertable = true, length = 45)
     private String Titulo;
+    
     @Column(nullable = false, updatable = true, insertable = true, length = 45)
     private String Pasta;
+    
     @Column(nullable = false, updatable = true, insertable = true)
     private int numero;
+    
     @Column(nullable = false, updatable = true, insertable = true, length = 45)
     private String justiça;
+    
     @Column(nullable = false, updatable = true, insertable = true, length = 45)
     private String instancia;
+    
     @Column(nullable = false, updatable = true, insertable = true, length = 45)
     private String orgao;
+    
     @Column(nullable = false, updatable = true, insertable = true)
     private double valorProcesso;
+    
     @Column(nullable = false, updatable = true, insertable = true, length = 45)
     private String descricao;
+    
     @Column(nullable = false, updatable = true, insertable = true, length = 45)
     private String acao;
+    
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "ParticipaAdvogado", schema = "ProjectPOO2",
             joinColumns = @JoinColumn(name = "idProcesso"), 
             inverseJoinColumns = @JoinColumn(name = "idAdvogado"))
     private Collection<Advogado> advogados;
+    
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "Cliente", schema = "ProjectPOO2",
             joinColumns = @JoinColumn(name = "idProcesso"), 
             inverseJoinColumns = @JoinColumn(name = "idPessoa"))
-    private Collection<Pessoa> cliente;
+    private Collection<PessoaFisica> cliente;
+    
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idEstado")
     @Fetch(FetchMode.JOIN)
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private EstadoProcesso estadoProcesso;
+    
     @OneToMany(mappedBy = "processo", fetch = FetchType.LAZY)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    private Collection<Audciencia> audiencias;
+    private Collection<Audiencia> audiencias;
+    
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idPagamento", insertable = true, updatable = true, nullable = false)
     private Pagamento pagamento;
+    
     @Id
     @Column(name = "idProcesso", nullable = false)
-    private int ID;
+    private int idProcesso;
 
     public Processo() {
     }
 
-    public Processo(String Titulo, String Pasta, int numero, String justiça, String instancia, String orgao, double valorProcesso, String descricao, String acao, Collection<Advogado> advogados, Collection<Pessoa> cliente, EstadoProcesso estadoProcesso, Collection<Audciencia> audiencias, Pagamento pagamento) {
+    public Processo(String Titulo, String Pasta, int numero, String justiça, 
+            String instancia, String orgao, double valorProcesso, String descricao, 
+            String acao, Collection<Advogado> advogados, Collection<PessoaFisica> cliente, 
+            EstadoProcesso estadoProcesso, Collection<Audiencia> audiencias, 
+            Pagamento pagamento, int idProcesso) {
         this.Titulo = Titulo;
         this.Pasta = Pasta;
         this.numero = numero;
@@ -78,7 +97,10 @@ public class Processo {
         this.estadoProcesso = estadoProcesso;
         this.audiencias = audiencias;
         this.pagamento = pagamento;
+        this.idProcesso = idProcesso;
     }
+
+  
     
     
     
@@ -169,12 +191,12 @@ public class Processo {
         this.pagamento = pagamento;
     }
 
-    public int getID() {
-        return ID;
+    public int getidProcesso() {
+        return idProcesso;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setidProcesso(int idProcesso) {
+        this.idProcesso = idProcesso;
     }
 
        

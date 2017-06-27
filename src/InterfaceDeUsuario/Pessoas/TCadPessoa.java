@@ -5,7 +5,6 @@
  */
 package InterfaceDeUsuario.Pessoas;
 
-import InterfaceDeUsuario.Jprincipal;
 import javax.swing.*;
 
 /**
@@ -15,16 +14,14 @@ import javax.swing.*;
 public class TCadPessoa extends javax.swing.JInternalFrame {
     PainelCadastroPessoaFIsica jpPessoaFisica;
     PainelCadastroPessoaJuridica jpPessoaJuridica;
+    ControleDeInteracao.ControlePrincipal ctrl;
     /**
      * Creates new form Tela
      */
-    public TCadPessoa(String title, Jprincipal janelaP) {
+    public TCadPessoa(String title, ControleDeInteracao.ControlePrincipal ctrlP) {
         super(title, true, true, true, true);
+        ctrl = ctrlP;
         initComponents();
-        //this.janelaP = janelaP;
-        //janelaP.getDesktopPane().add(this);
-        //setVisible(true); 
-        //setDefaultCloseOperation(HIDE_ON_CLOSE);
     }
 
     /**
@@ -41,7 +38,6 @@ public class TCadPessoa extends javax.swing.JInternalFrame {
         lblNome = new javax.swing.JLabel();
         btnOk = new javax.swing.JButton();
         lblEndereco = new javax.swing.JLabel();
-        txtEndereco = new javax.swing.JTextField();
         lblTel = new javax.swing.JLabel();
         lblEmail = new javax.swing.JLabel();
         txtTel = new javax.swing.JTextField();
@@ -51,16 +47,27 @@ public class TCadPessoa extends javax.swing.JInternalFrame {
         rbtnFisica = new javax.swing.JRadioButton();
         rbtnJuridica = new javax.swing.JRadioButton();
         txtNome = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtUf = new javax.swing.JTextField();
+        txtCidade = new javax.swing.JTextField();
+        txtBairro = new javax.swing.JTextField();
+        txtRua = new javax.swing.JTextField();
+        txtNumero = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtCep = new javax.swing.JTextField();
         jpVariavel = new javax.swing.JPanel();
 
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setPreferredSize(new java.awt.Dimension(500, 400));
+        setPreferredSize(new java.awt.Dimension(750, 600));
 
         jpPessoas.setBorder(javax.swing.BorderFactory.createTitledBorder("Pessoa"));
-        jpPessoas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNome.setText("Nome");
-        jpPessoas.add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 55, -1, -1));
 
         btnOk.setText("OK");
         btnOk.addActionListener(new java.awt.event.ActionListener() {
@@ -68,19 +75,12 @@ public class TCadPessoa extends javax.swing.JInternalFrame {
                 btnOkActionPerformed(evt);
             }
         });
-        jpPessoas.add(btnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 138, 52));
 
         lblEndereco.setText("Endereço");
-        jpPessoas.add(lblEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 86, -1, -1));
-        jpPessoas.add(txtEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 335, -1));
 
         lblTel.setText("Telefone");
-        jpPessoas.add(lblTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 116, -1, -1));
 
         lblEmail.setText("E-mail");
-        jpPessoas.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 144, -1, -1));
-        jpPessoas.add(txtTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 335, -1));
-        jpPessoas.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 335, -1));
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +88,6 @@ public class TCadPessoa extends javax.swing.JInternalFrame {
                 btnCancelarActionPerformed(evt);
             }
         });
-        jpPessoas.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 142, 52));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -108,10 +107,11 @@ public class TCadPessoa extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(rbtnFisica)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rbtnJuridica)
-                .addGap(0, 7, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,8 +123,132 @@ public class TCadPessoa extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jpPessoas.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 160, 40));
-        jpPessoas.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 335, -1));
+        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        jLabel1.setText("UF (Estado)");
+
+        jLabel2.setText("Cidade");
+
+        jLabel3.setText("Bairro");
+
+        jLabel4.setText("Rua");
+
+        jLabel5.setText("Numero");
+
+        jLabel6.setText("CEP");
+
+        javax.swing.GroupLayout jpPessoasLayout = new javax.swing.GroupLayout(jpPessoas);
+        jpPessoas.setLayout(jpPessoasLayout);
+        jpPessoasLayout.setHorizontalGroup(
+            jpPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpPessoasLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(jpPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpPessoasLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpPessoasLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(lblNome)
+                        .addGap(17, 17, 17)
+                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpPessoasLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lblTel)
+                        .addGap(11, 11, 11)
+                        .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpPessoasLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(lblEmail)
+                        .addGap(15, 15, 15)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpPessoasLayout.createSequentialGroup()
+                        .addComponent(btnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 20, 20)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(jpPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(jpPessoasLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel2))
+                    .addGroup(jpPessoasLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel3))
+                    .addGroup(jpPessoasLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel4))
+                    .addGroup(jpPessoasLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel5)))
+                .addGap(16, 16, 16)
+                .addGroup(jpPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jpPessoasLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(lblEndereco))
+                    .addComponent(txtUf, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRua, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jpPessoasLayout.createSequentialGroup()
+                        .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtCep))))
+        );
+        jpPessoasLayout.setVerticalGroup(
+            jpPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpPessoasLayout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jpPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNome)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(jpPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTel)
+                    .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(jpPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblEmail)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(jpPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(jpPessoasLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jpPessoasLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel1)
+                .addGap(14, 14, 14)
+                .addComponent(jLabel2)
+                .addGap(14, 14, 14)
+                .addComponent(jLabel3)
+                .addGap(14, 14, 14)
+                .addComponent(jLabel4)
+                .addGap(14, 14, 14)
+                .addComponent(jLabel5))
+            .addGroup(jpPessoasLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lblEndereco)
+                .addGap(14, 14, 14)
+                .addComponent(txtUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(txtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(txtRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addGroup(jpPessoasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         jpVariavel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jpVariavel.setLayout(new java.awt.BorderLayout());
@@ -133,24 +257,33 @@ public class TCadPessoa extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpPessoas, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+            .addComponent(jpPessoas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jpVariavel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jpPessoas, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpPessoas, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpVariavel, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jpVariavel, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
-        if(txtEndereco.getText().equals(""))
-            JOptionPane.showMessageDialog(null, "Campo Enderço não preenchido!", "Campo inválido", JOptionPane.WARNING_MESSAGE);
+        if(txtUf.getText().equals(""))
+            JOptionPane.showMessageDialog(null, "Campo Estado(UF) não preenchido!", "Campo inválido", JOptionPane.WARNING_MESSAGE);
+        if(txtCidade.getText().equals(""))
+            JOptionPane.showMessageDialog(null, "Campo Cidade não preenchido!", "Campo inválido", JOptionPane.WARNING_MESSAGE);
+        if(txtBairro.getText().equals(""))
+            JOptionPane.showMessageDialog(null, "Campo Bairro não preenchido!", "Campo inválido", JOptionPane.WARNING_MESSAGE);
+        if(txtRua.getText().equals(""))
+            JOptionPane.showMessageDialog(null, "Campo Rua não preenchido!", "Campo inválido", JOptionPane.WARNING_MESSAGE);
+        if(txtCep.getText().equals(""))
+            JOptionPane.showMessageDialog(null, "Campo Rua não preenchido!", "Campo inválido", JOptionPane.WARNING_MESSAGE);
+        if(txtNumero.getText().equals(""))
+            JOptionPane.showMessageDialog(null, "Campo Numero não preenchido!", "Campo inválido", JOptionPane.WARNING_MESSAGE);
         if(txtEmail.getText().equals(""))
           JOptionPane.showMessageDialog(null, "Campo E-mail não preenchido!", "Campo inválido", JOptionPane.WARNING_MESSAGE);
         if(txtNome.getText().equals(""))
@@ -159,11 +292,13 @@ public class TCadPessoa extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Campo telefone não preenchido!", "Campo inválido", JOptionPane.WARNING_MESSAGE);
         
         if(rbtnFisica.isSelected()){
-            jpPessoaFisica = new PainelCadastroPessoaFIsica();
+            jpPessoaFisica = new PainelCadastroPessoaFIsica(ctrl, txtNome.getText(),
+                    txtUf.getText(), txtCidade.getText(), txtBairro.getText(), txtRua.getText(),
+                    txtCep.getText(), txtNumero.getText(), txtTel.getText(), txtEmail.getText());
             jpVariavel.removeAll();
             jpVariavel.add(jpPessoaFisica);
         }else if(rbtnJuridica.isSelected()){
-            jpPessoaJuridica = new PainelCadastroPessoaJuridica();
+            jpPessoaJuridica = new PainelCadastroPessoaJuridica(ctrl);
             jpVariavel.removeAll();
             jpVariavel.add(jpPessoaJuridica);
         }else{
@@ -188,7 +323,14 @@ public class TCadPessoa extends javax.swing.JInternalFrame {
     private javax.swing.JToggleButton btnCancelar;
     private javax.swing.JButton btnOk;
     private javax.swing.ButtonGroup buttonGroupTipoPessoa;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JPanel jpPessoas;
     private javax.swing.JPanel jpVariavel;
     private javax.swing.JLabel lblEmail;
@@ -197,9 +339,14 @@ public class TCadPessoa extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblTel;
     private javax.swing.JRadioButton rbtnFisica;
     private javax.swing.JRadioButton rbtnJuridica;
+    private javax.swing.JTextField txtBairro;
+    private javax.swing.JTextField txtCep;
+    private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtNumero;
+    private javax.swing.JTextField txtRua;
     private javax.swing.JTextField txtTel;
+    private javax.swing.JTextField txtUf;
     // End of variables declaration//GEN-END:variables
 }

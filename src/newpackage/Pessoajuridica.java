@@ -2,6 +2,7 @@ package newpackage;
 // Generated 19/06/2017 16:21:07 by Hibernate Tools 4.3.1
 
 
+import Dominio.Endereco;
 import java.util.HashSet;
 import java.util.Set;
 

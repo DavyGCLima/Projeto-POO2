@@ -18,7 +18,7 @@ public class GerenciarPessoas extends javax.swing.JInternalFrame {
     /**
      * Creates new form ExcluirPessoa
      */
-    public GerenciarPessoas(String titulo,Jprincipal janelaP) {
+    public GerenciarPessoas(String titulo) {
          super(titulo, true, true, true, true);
         initComponents();
     }

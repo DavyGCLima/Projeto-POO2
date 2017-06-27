@@ -5,7 +5,9 @@
  */
 package ControleDeInteracao;
 
-import InterfaceDeUsuario.Jprincipal;
+import GerenciaDeTarefas.GTPrincipal;
+import InterfaceDeUsuario.*;
+import javax.swing.JDesktopPane;
 
 /**
  *
@@ -39,16 +41,83 @@ public class ControlePrincipal {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Jprincipal().setVisible(true);
+                ControlePrincipal ctrl = new ControlePrincipal();
+                //new Jprincipal().setVisible(true);
             }
         });
     }
+     
+//    TCadPessoa TcadCliente;
+//    GerenciarPessoas TgerenPessoas;
+//    CadastroProcesso TcadProcesso;
+//    GerenciarProcesso TgerenciarProcesso;
+//    TCadastrarAdvogados TCadAdvogado;
+//    GerenciarAdvogados genreciarAdvogado;
+    JDesktopPane desktopPane;
+    ControlePessoas CtrlPessoas;
+    ControleProcessos CtrlProcessos;
+    ControlePagamento CtrlPagamento;
+    ControleAdvogados CtrlAdvogados;
+    ControleErros CtrlErros;
+    GTPrincipal gt;
 
-    public ControlePrincipal() {
-        ControlePessoas CtrlPessoas = new ControlePessoas();
-        ControleProcessos CtrlProcessos = new ControleProcessos();
-        ControlePagamento CtrlPagamento = new ControlePagamento();
+    public ControlePrincipal(/*JDesktopPane desktopPane*/) {
+        Jprincipal jp = new Jprincipal(this);
+        jp.setVisible(true);
+        desktopPane = jp.getDesktopPane();
+        CtrlPessoas = new ControlePessoas(this);
+        CtrlProcessos = new ControleProcessos(this);
+        CtrlPagamento = new ControlePagamento(this);
+        CtrlAdvogados = new ControleAdvogados(this);
+        CtrlErros = new ControleErros(this);
+        gt = new GTPrincipal();
+        //this.desktopPane = desktopPane;
     }
-      
-      
+    public void AbrirCadastroDePEssoas(){
+        CtrlPessoas.abrirTCadPessoa(desktopPane, this);
+    }
+    
+    public void AbrirGerenciaDePessoas(){
+        CtrlPessoas.abrirTGerenciarPessoas(desktopPane, this);
+    }
+     
+    public void AbrirGerenciaProcesso(){
+        CtrlProcessos.abrirTGerenciaProcesso(desktopPane, this);
+    }
+    
+    public void AbrirCadastroProcesso(){
+        CtrlProcessos.abrirTCadProcesso(desktopPane, this);
+    }
+    
+    public void AbrirCadastroAdvogado(){
+        CtrlAdvogados.abrirCadastroAdvogado(desktopPane, this);
+    }
+    
+    public void AbriGerenciaAdvogados(){
+        CtrlAdvogados.abrirGerenciarAdvogados(desktopPane, this);
+    }
+    
+   public ControlePessoas getControlePssoas(){
+       return CtrlPessoas;
+   }
+   
+   public ControleAdvogados getControleAdvogados(){
+       return CtrlAdvogados;
+   }
+   
+   public ControleProcessos getControleProcessos(){
+       return CtrlProcessos;
+   }
+   
+   public ControlePagamento getControlePagamento(){
+       return CtrlPagamento;
+   }
+   
+   public ControleErros getControleErros(){
+       return CtrlErros;
+   }
+   
+   public GTPrincipal getGTPrincipal(){
+       return gt;
+   }
 }

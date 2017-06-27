@@ -5,6 +5,7 @@
  */
 package Dominio;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.*;
@@ -14,19 +15,24 @@ import javax.persistence.*;
  */
 @Entity
 @Table(schema = "ProjectPOO2")
-public class Advogado{
+public class Advogado implements Serializable{
+    
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "idAdvogado")
-    private int id;
-    @OneToOne @JoinColumn(name="idPessoaFisicia")
+    private int idAdvogado;
+    
+    @OneToOne @JoinColumn(name="idPessoa")
     private PessoaFisica pessoa;
+    
     @Column(nullable = false, insertable = true, updatable = true)
     private String oab;
+    
     @ManyToMany(fetch = FetchType.EAGER)
      @JoinTable(name = "ParticipaAdvogado", schema = "ProjectPOO2",
             joinColumns = @JoinColumn(name = "idAdvogado"), 
             inverseJoinColumns = @JoinColumn(name = "idProcesso"))
     private Collection<Processo> processos;
+    
     @OneToOne @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 
@@ -65,11 +71,11 @@ public class Advogado{
     }
 
     public int getId() {
-        return id;
+        return idAdvogado;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.idAdvogado = id;
     }
     
     
